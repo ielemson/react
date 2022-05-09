@@ -32,12 +32,16 @@ const ForgotPassword = () => {
                 notify_error(error.response.data.message)
                 // console.log(error.response.data.message)
 
-            } else {
-
+            } else if(error.response.status === 500){
+                notify_error("connection could not be established")
+            }
+             else {
                 error.response.data.errors.forEach(error => {
                     notify_error(error)
                 });
             }
+
+          
         });
     }
  

@@ -17,34 +17,35 @@ const ResetPassword = () => {
     const [email,setEmail] = useState(null);
     let {token} = useParams();
     const navigate = useNavigate();
+
     const {register, handleSubmit, formState: {
             errors
         }} = useForm();
 
+    const apiCall = ()=>{
+        api.get(`${endpoint}/${token}`).then(response => {
+            setTokenStatus(response.data.token_status)
+            setEmail(response.data.useremail)
+            console.log(response)
+        }).catch(error => {
+
+            if (error.response.status === 404) {
+                notify_error(error.response.data.message)
+                // console.log(error.response.data.message)
+
+            } else {
+
+                error.response.data.errors.forEach(error => {
+                    notify_error(error)
+                });
+            }
+
+            // console.log(error.response)
+        });
+    }
+
     React.useEffect(() => {
-        return() => {
-
-            api.get(`${endpoint}/${token}`).then(response => {
-                setTokenStatus(response.data.token_status)
-                setEmail(response.data.useremail)
-                console.log(response)
-            }).catch(error => {
-
-                if (error.response.status === 404) {
-                    notify_error(error.response.data.message)
-                    // console.log(error.response.data.message)
-
-                } else {
-
-                    error.response.data.errors.forEach(error => {
-                        notify_error(error)
-                    });
-                }
-
-                // console.log(error.response)
-            });
-
-        }
+       if(token && token !== "") apiCall()
     }, [])
 
     const onFormSubmit = (data) => {
