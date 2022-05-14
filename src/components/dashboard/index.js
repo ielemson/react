@@ -1,0 +1,5 @@
+export {default as Dashboard} from "./Dashboard"
+export {default as Aside} from "./components/aside"
+export {default as Navbar} from "./components/navbar"
+export {default as Content} from "./components/content"
+export {default as Loader} from "./components/loader"

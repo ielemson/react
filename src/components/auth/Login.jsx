@@ -1,25 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import {useForm} from "react-hook-form";
-import { UserContextAPI } from '../../context/UserContext';
+import {AuthContext} from '../../context/auth';
 import {Toaster} from 'react-hot-toast';
 import {Header, Footer} from ".."
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 const Login = () => {
 
-    const useAuth = () => {
-        return React.useContext(UserContextAPI);
-      };
-      const { onLogin,isLoggedIn } = useAuth();
+    // const useAuth = () => {
+    //     return React.useContext(AuthContext);
+    // };
+    
+    const {onLogin,isFalse} = useContext(AuthContext)
+    // console.log(user)
+    const navigate = useNavigate();
+    // const {onLogin, isLoggedIn} = useAuth();
 
     const {register, handleSubmit, formState: {
             errors
         }} = useForm();
 
     const onFormSubmit = (data) => {
-        onLogin(data)
+        onLogin(data)  
     }
- 
+
     return (
         <>
             <Header/>
@@ -63,9 +67,9 @@ const Login = () => {
                             }</span>
                         </div>
                         <Link to="/forgot-password">
-                        <button type="reset" className="w-max">
-                       <span className="text-sm tracking-wide text-sky-600">Forgot password ?</span>
-                      </button>
+                            <button type="reset" className="w-max">
+                                <span className="text-sm tracking-wide text-sky-600">Forgot password ?</span>
+                            </button>
                         </Link>
                         <div>
                             <button type='submit' className="w-full px-6 py-3 rounded-lg bg-sky-500 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800">

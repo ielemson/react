@@ -1,30 +1,19 @@
 import React from 'react';
 import {Link, useNavigate} from 'react-router-dom';
+import {AiOutlineMenu,AiOutlineClose} from 'react-icons/ai';
+import {AuthContext} from "../context/auth"
 import api from "../API"
 const endpoint = "/logout"
-import {AiOutlineMenu,AiOutlineClose} from 'react-icons/ai';
-import {HiMenuAlt4} from 'react-icons/hi';
+
+// import {HiMenuAlt4} from 'react-icons/hi';
 
 
-const Header = ({user}) => {
+const Header = () => {
     const navigate = useNavigate();
     const [toggleMenu, setToggleMenu] = React.useState(false);
-    const NavBarItem = ({ title, classprops }) => (
-        <li className={`mx-4 cursor-pointer ${classprops}`}>{title}</li>
-    );
-    const Logout = () => {
+    const {isLoggedIn,logout} = React.useContext(AuthContext)
+    
 
-        api.post(endpoint).then(response => {
-            console.log(response)
-            setTimeout(() => {
-                localStorage.clear()
-                navigate("/login");
-            }, 300);
-        }).catch(error => {
-            console.log(error.response);
-
-        });
-    }
 
     return (
         <div>
@@ -56,21 +45,21 @@ const Header = ({user}) => {
                                             </Link>
                                         </li>
 
-                                        <li className='mx-4 my-2 text-lg text-bold cursor-pointer'>
-                                            <a href="#" className="block md:px-3">
-                                                <span>Pricing</span>
-                                            </a>
-                                        </li>
+                                        {isLoggedIn  && <li className='mx-2 cursor-pointer'>
+                                        <Link to="/dashboard" className="block md:px-3">
+                                                <span>Dashboard</span>
+                                            </Link>
+                                        </li> }
                                         
 
 
                                         {
-                                        user ? (
+                                        isLoggedIn ? (
 
                                             <li className='mx-4 my-2 text-lg text-bold cursor-pointer'>
-                                                <button onClick={Logout}
+                                                <button onClick={logout}
                                                     type="button"
-                                                    className=" w-full py-3 px-6 rounded-md text-center transition bg-red-500 hover:bg-red-600 active:bg-red-700 focus:bg-red-600 sm:w-max">
+                                                    className=" w-full py-1 px-3 rounded-md text-center transition bg-red-500 hover:bg-red-600 active:bg-red-700 focus:bg-red-600 sm:w-max">
                                                     <span className="block text-white font-semibold">
                                                         Logout
                                                     </span>
@@ -114,12 +103,12 @@ const Header = ({user}) => {
                                                 <span>Home</span>
                                             </Link>
                                         </li>
-
-                                        <li className='mx-2 cursor-pointer'>
-                                            <a href="#" className="block md:px-3">
-                                                <span>Pricing</span>
-                                            </a>
-                                        </li>
+                                            {isLoggedIn  && <li className='mx-2 cursor-pointer'>
+                                        <Link to="/dashboard" className="block md:px-3">
+                                                <span>Dashboard</span>
+                                            </Link>
+                                        </li> }
+                                        
                                         <li className='mx-2 cursor-pointer'>
                                             <a href="#" className="block md:px-3">
                                                 <span>Blog</span>
@@ -130,10 +119,10 @@ const Header = ({user}) => {
                                     <ul className="border-t space-y-2 pt-2 lg:space-y-0 lg:space-x-2 lg:pt-0 lg:pl-2 lg:border-t-0 lg:border-l lg:items-center lg:flex">
 
                                         {
-                                        user ? (
+                                        isLoggedIn ? (
 
                                             <li>
-                                                <button onClick={Logout}
+                                                <button onClick={()=>logout()}
                                                     type="button"
                                                     className=" w-full py-3 px-6 rounded-md text-center transition bg-red-500 hover:bg-red-600 active:bg-red-700 focus:bg-red-600 sm:w-max">
                                                     <span className="block text-white font-semibold">

@@ -1,10 +1,10 @@
 
 import React, { useContext } from "react";
-import { UserContextAPI } from '../context/UserContext';
+import { AuthContext } from '../context/auth';
 import {Header,Footer,Hero} from "./";
 
 const Home = () => {
-const contextData = useContext(UserContextAPI)
+const contextData = useContext(AuthContext)
   return (
     
 <>
