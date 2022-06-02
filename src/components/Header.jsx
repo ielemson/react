@@ -4,7 +4,7 @@ import {AiOutlineMenu,AiOutlineClose} from 'react-icons/ai';
 import {AuthContext} from "../context/auth"
 // import api from "../API"
 // const endpoint = "/logout"
-const logo = "../logo.png"
+const logo = "https://res.cloudinary.com/ielemson/image/upload/v1654133179/hash360/logo_fjsknp.png"
 
 // import {HiMenuAlt4} from 'react-icons/hi';
 
@@ -24,7 +24,7 @@ const Header = () => {
                         <div className="flex flex-wrap items-center justify-between py-6 gap-6 md:py-4 md:gap-0">
                             <div className="w-full flex justify-between lg:w-auto">
                                 <Link to="/" aria-label="logo">
-                                    <img src={logo} className="w-36" alt="tailus logo" width="144" height="48"/>
+                                    <img src={logo} className="w-36" alt="logo" width="144" height="48"/>
                                 </Link>
 
                                 <div aria-label="humburger" id="hamburger" className="relative w-10 h-10 -mr-2 lg:hidden">
