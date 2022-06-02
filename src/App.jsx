@@ -7,7 +7,8 @@ import {
     ForgotPassword,
     ResetPassword,
     NotFound,
-    Dashboard
+    Dashboard,
+    Blog
 } from "./components";
 import {AuthContextProvider} from './context/auth';
 import AuthCheck from './utils/AuthCheck';
@@ -30,6 +31,8 @@ const App = () => {
                         element={<ForgotPassword/>}/>
                     <Route path="/reset-password/:token"
                         element={<ResetPassword/>}/>
+                   <Route path='blog' element={<Blog/>}/>
+                   {/* Restricte Route */}
                     <Route path="/dashboard"
                         element={
 
@@ -37,6 +40,8 @@ const App = () => {
                             <Dashboard/>
                         </AuthCheck>
                               }/>
+                 {/* Restricte Route */}
+
                     <Route path="*"
                         element={<NotFound/>}/>
                 </Routes>

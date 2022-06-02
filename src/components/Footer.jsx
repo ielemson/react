@@ -1,5 +1,5 @@
-import React from 'react'
-
+// import React from 'react'
+const logo = "../logo.png"
 const Footer = () => {
   return (
    
@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="grid grid-cols-8 gap-6 md:gap-0">
                 <div className="border-r col-span-8 md:col-span-2 lg:col-span-3">
                     <div className="flex gap-6 items-center justify-between py-6 border-b border-white md:py-0 md:border-none md:block md:space-y-6">
-                        <img src="https://tailus.io/sources/blocks/tech-startup/preview/images/logo.svg" alt="logo tailus" width="100" height="42" className="w-32" />
+                        <img src={logo} alt="logo tailus" width="100" height="42" className="w-32" />
                         <div className="flex gap-6">
                             <a href="#" target="blank" aria-label="github" className="hover:text-cyan-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-github" viewBox="0 0 16 16">
@@ -38,7 +38,7 @@ const Footer = () => {
                             <h6 className="text-lg font-medium text-gray-800">Company</h6>
                             <ul className="list-inside mt-4 space-y-4">
                                 <li>
-<a href="#" className="hover:text-cyan-600 transition">About</a>
+                                    <a href="#" className="hover:text-cyan-600 transition">About</a>
                                 </li>
                                 <li>
                                     <a href="#" className="hover:text-cyan-600 transition">Customers</a>
@@ -96,7 +96,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="pb-8 py-4 md:pl-16 border-t flex justify-between">
-                        <span>&copy; tailus 2003 - <span id="year"></span> </span>
+                        <span>&copy; hash360 2022 - <span id="year"></span> </span>
                         <span>All right reserved</span>
                     </div>
                 </div>

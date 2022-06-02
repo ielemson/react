@@ -2,8 +2,9 @@ import React from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {AiOutlineMenu,AiOutlineClose} from 'react-icons/ai';
 import {AuthContext} from "../context/auth"
-import api from "../API"
-const endpoint = "/logout"
+// import api from "../API"
+// const endpoint = "/logout"
+const logo = "../logo.png"
 
 // import {HiMenuAlt4} from 'react-icons/hi';
 
@@ -23,7 +24,7 @@ const Header = () => {
                         <div className="flex flex-wrap items-center justify-between py-6 gap-6 md:py-4 md:gap-0">
                             <div className="w-full flex justify-between lg:w-auto">
                                 <Link to="/" aria-label="logo">
-                                    <img src="https://tailus.io/sources/blocks/tech-startup/preview/images/logo.svg" className="w-36" alt="tailus logo" width="144" height="48"/>
+                                    <img src={logo} className="w-36" alt="tailus logo" width="144" height="48"/>
                                 </Link>
 
                                 <div aria-label="humburger" id="hamburger" className="relative w-10 h-10 -mr-2 lg:hidden">
@@ -110,9 +111,9 @@ const Header = () => {
                                         </li> }
                                         
                                         <li className='mx-2 cursor-pointer'>
-                                            <a href="#" className="block md:px-3">
+                                            <Link to={'blog'}  className="block md:px-3">
                                                 <span>Blog</span>
-                                            </a>
+                                            </Link>
                                         </li></ul>
 
                                        
